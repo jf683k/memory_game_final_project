@@ -102,7 +102,6 @@ function click(card) {
 			timerStart = true;
 			startTimer();
 		}
-}
 		/*If else statement to create proper action
 		*considering whether a card is already opened
 		*or not.*/
