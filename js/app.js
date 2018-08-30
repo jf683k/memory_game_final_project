@@ -21,6 +21,10 @@ function shuffle(array) {
     return array;
 }
 
+/*First click timer*/
+var timerStart;
+timerStart = false;
+
 /*Timer*/
 let hour = 0;
 let minute = 0;
@@ -35,6 +39,7 @@ function startTimer() {
 			minute++;
 			second = 0;
 		}
+		document.getElementById('timer').innerHTML = formatTimer();
 	}, 1000);
 }
 
@@ -93,6 +98,9 @@ function click(card) {
 		const currentCard = this;
 		const previousCard = openedCards[0];
 
+		if ! timerStart() {
+			timerStart = true;
+		}
 		/*If else statement to create proper action
 		*considering whether a card is already opened
 		*or not.*/
