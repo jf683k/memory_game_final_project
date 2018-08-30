@@ -98,9 +98,11 @@ function click(card) {
 		const currentCard = this;
 		const previousCard = openedCards[0];
 
-		if ! timerStart() {
+		if (!timerStart) {
 			timerStart = true;
+			startTimer();
 		}
+}
 		/*If else statement to create proper action
 		*considering whether a card is already opened
 		*or not.*/
