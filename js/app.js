@@ -1,14 +1,10 @@
 /*
  * Create a list that holds all of your cards
  */
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+ const icons = ["fa fa-diamond","fa fa-diamond","fa fa-paper-plane-o",
+"fa fa-paper-plane-o", "fa fa-anchor", "fa fa-anchor", "fa fa-bolt",
+"fa fa-bolt", "fa fa-cube", "fa fa-cube","fa fa-leaf", "fa fa-leaf", 
+"fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb",];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -24,6 +20,189 @@ function shuffle(array) {
 
     return array;
 }
+
+/*Timer*/
+let hour = 0;
+let minute = 0;
+let second = 0;
+
+let timer;
+
+function startTimer() {
+	timer = setInterval(function(){
+		second++;
+		if(second == 60) {
+			minute++;
+			second = 0;
+		}
+	}, 1000);
+}
+
+function stopTimer() {
+	clearInterval(timer);
+}
+
+function formatTimer() {
+	let sec = second > 9 ? String(second) : "0" + String(second);
+	let min = minute > 9 ? String(minute) : "0" + String(minute);
+	return min + ":" + sec;
+}
+/*Shuffles the deck of cards*/
+/*shuffle(icons);*/
+
+const cardsContainer = document.querySelector(".deck");
+
+/*This is an empty array which allows
+*the clicked on cards to be registered.*/
+let openedCards = [];
+let matchedCards = [];
+
+
+/*Begin the game*/
+function init() {
+
+	/*The below coding creates the deck 
+	* as well as places the icons
+	* from the above array to each*/
+	for(let i = 0; i < icons.length; i++) {
+		const card = document.createElement("li");
+		card.classList.add("card");
+		card.innerHTML = `<i class="${icons[i]}"></i>`;
+		cardsContainer.appendChild(card);
+
+		/*Creates animation for card clicks.*/
+		click(card);
+	}	
+}
+
+
+
+
+/*Click event*/
+function click(card) {
+
+	/*Below is "listening" for an event within the 
+	* the deck, specifically, a click. This is included
+	*in the loop to involve each event on the "cards"
+	*within the deck.*/
+	
+
+	
+	card.addEventListener("click", function() {
+
+		const currentCard = this;
+		const previousCard = openedCards[0];
+
+		/*If else statement to create proper action
+		*considering whether a card is already opened
+		*or not.*/
+		if(openedCards.length === 1) {
+
+			card.classList.add("open", "show", "disable");
+			openedCards.push(this);
+
+			/*Below calls for the comparison of the cards.*/
+			compare(currentCard, previousCard);
+
+		} else {
+		/*We do NOT have any opened cards.*/
+			currentCard.classList.add("open", "show", "disable");
+			openedCards.push(this);
+		}
+	});
+}
+
+/*Below function compares the chosen cards for matches.*/
+function compare(currentCard, previousCard) {
+	if(currentCard.innerHTML === previousCard.innerHTML) {
+		currentCard.classList.add("match");
+		previousCard.classList.add("match");
+
+		matchedCards.push(currentCard, previousCard);
+				
+		openedCards = [];
+
+		/*Check if all cards are matched.*/
+		gameOver();
+
+	} else {
+		/*This will allow the second card to appear
+		*for 1/2 second when a mismatch is made*/
+		setTimeout(function() {
+			currentCard.classList.remove("open", "show", "disable");
+			previousCard.classList.remove("open", "show", "disable");
+			openedCards = [];
+		}, 500);
+
+	}
+
+	/*Calls moveCounter*/
+	moveCounter();
+}
+
+/*The below function calculates when all the 
+*cards are matched and the game is over.*/
+function gameOver() {
+	if (matchedCards.length === icons.length) {
+		alert("Congratulations, you have matched all the cards!!!");
+	}
+}
+
+/*Move Counter*/
+const movesContainer = document.querySelector(".moves");
+let moves = 0;
+movesContainer.innerHTML = 0;
+function moveCounter() {
+	moves++;
+	movesContainer.innerHTML = moves;
+
+	/*Calculate Star Rating*/
+	ranking();
+}
+
+/*Star Rating*/
+const starsContainer = document.querySelector(".stars");
+function ranking() {
+	switch(moves) {
+		case 20:
+			starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
+        	<li><i class="fa fa-star"></i>`;
+        break;
+
+        case 25:
+        	starsContainer.innerHTML = `<li><i class="fa fa-star"></i>`;
+        break;
+	}
+}
+
+/*Restart Button*/
+const restartButton = document.querySelector(".restart");
+restartButton.addEventListener("click", function() {
+	/*Reset cards back to beginning.*/
+	cardsContainer.innerHTML = "";
+	/*Call init() to restart game.*/
+	init();
+	/*Reset variables.*/
+	matchedCards = [];
+	moves = 0;
+	movesContainer.innerHTML = moves;
+	starsContainer.innerHTML = `<li><i class="fa fa-star"></i>
+	<li><i class="fa fa-star"></i>
+	<li><i class="fa fa-star"></i>`;
+	shuffle(icons);
+});
+
+/*Play the first time.*/
+init();
+
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+
+
 
 
 /*
