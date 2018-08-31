@@ -189,6 +189,7 @@ const restartButton = document.querySelector(".restart");
 restartButton.addEventListener("click", function() {
 	/*Reset cards back to beginning.*/
 	cardsContainer.innerHTML = "";
+	clearInterval(timer);
 	/*Call init() to restart game.*/
 	init();
 	/*Reset variables.*/
