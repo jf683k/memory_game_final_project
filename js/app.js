@@ -47,6 +47,14 @@ function stopTimer() {
 	clearInterval(timer);
 }
 
+//resetting the timer function
+function resetTimer() {
+    second = 0;
+    minute = 0; 
+    var timer = document.querySelector("#timer");
+    document.getElementById('timer').innerHTML = formatTimer();
+    clearInterval(interval);
+//formatting the timer function
 function formatTimer() {
 	let sec = second > 9 ? String(second) : "0" + String(second);
 	let min = minute > 9 ? String(minute) : "0" + String(minute);
@@ -196,6 +204,7 @@ restartButton.addEventListener("click", function() {
 	/*Reset variables.*/
 	matchedCards = [];
 	moves = 0;
+	resetTimer();
 	movesContainer.innerHTML = moves;
 	starsContainer.innerHTML = `<li><i class="fa fa-star"></i>
 	<li><i class="fa fa-star"></i>
