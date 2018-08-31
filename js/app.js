@@ -153,7 +153,8 @@ function compare(currentCard, previousCard) {
 *cards are matched and the game is over.*/
 function gameOver() {
 	if (matchedCards.length === icons.length) {
-		alert("Congratulations, you have matched all the cards!!!");
+		stopTimer();
+		finalTime = timer.innerHTML;
 	}
 }
 
@@ -189,7 +190,7 @@ const restartButton = document.querySelector(".restart");
 restartButton.addEventListener("click", function() {
 	/*Reset cards back to beginning.*/
 	cardsContainer.innerHTML = "";
-	clearInterval(timer);
+	stopTimer(timer);
 	/*Call init() to restart game.*/
 	init();
 	/*Reset variables.*/
