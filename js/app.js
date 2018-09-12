@@ -32,6 +32,7 @@ let second = 0;
 
 let timer;
 
+//timer start function
 function startTimer() {
 	timer = setInterval(function(){
 		second++;
@@ -42,7 +43,7 @@ function startTimer() {
 		document.getElementById('timer').innerHTML = formatTimer();
 	}, 1000);
 }
-
+//stop timer function
 function stopTimer() {
 	clearInterval(timer);
 }
@@ -54,7 +55,8 @@ function resetTimer() {
     var timer = document.querySelector("#timer");
     document.getElementById('timer').innerHTML = formatTimer();
     clearInterval(interval);
-//formatting the timer function
+}
+//formatting of the timer
 function formatTimer() {
 	let sec = second > 9 ? String(second) : "0" + String(second);
 	let min = minute > 9 ? String(minute) : "0" + String(minute);
@@ -134,12 +136,11 @@ function compare(currentCard, previousCard) {
 	if(currentCard.innerHTML === previousCard.innerHTML) {
 		currentCard.classList.add("match");
 		previousCard.classList.add("match");
-
 		matchedCards.push(currentCard, previousCard);
 				
 		openedCards = [];
 
-		/*Check if all cards are matched.*/
+		//Check if all cards are matched.
 		gameOver();
 
 	} else {
@@ -157,15 +158,12 @@ function compare(currentCard, previousCard) {
 	moveCounter();
 }
 
-/*The below function calculates when all the 
-*cards are matched and the game is over.*/
+/*Game over*/
 function gameOver() {
 	if (matchedCards.length === icons.length) {
 		stopTimer();
-		finalTime = timer.innerHTML;
 	}
 }
-
 /*Move Counter*/
 const movesContainer = document.querySelector(".moves");
 let moves = 0;
@@ -198,7 +196,8 @@ const restartButton = document.querySelector(".restart");
 restartButton.addEventListener("click", function() {
 	/*Reset cards back to beginning.*/
 	cardsContainer.innerHTML = "";
-	stopTimer(timer);
+	stopTimer();
+	timerStart = false;
 	/*Call init() to restart game.*/
 	init();
 	/*Reset variables.*/
@@ -211,7 +210,6 @@ restartButton.addEventListener("click", function() {
 	<li><i class="fa fa-star"></i>`;
 	shuffle(icons);
 });
-
 /*Play the first time.*/
 init();
 
