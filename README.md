@@ -1,10 +1,10 @@
 # Memory Game Project
 
-Instructions:
+##Instructions:
 
-Click on cards attempting to match two cards.
-Try to complete all matches as quickly as possible
-and with as few moves as possible.
+*Click on cards attempting to match two cards.*
+*Try to complete all matches as quickly as possible*
+*and with as few moves as possible.*
 
 Star Ratings:
 
