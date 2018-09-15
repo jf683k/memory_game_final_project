@@ -30,16 +30,20 @@
         	</div>
         </section>
 
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
-
+        
         <!-- The Modal -->
         <div id="myModal" class="modal">
 
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Some text in the Modal..</p>
+                <span class="close" id="close-modal">&times;</span>
+                <section class="score-panel">
+                    <span class="modal-stars">You achieved <span id="stars-count">3</span> star(s). It took you</span>
+                    <span class="modal-moves">0</span> Moves. If you want to play again, click 
+                    <span class="modal-restart"> HERE.
+                        <i class="fa fa-repeat"></i>
+                    </span>
+                </section>
             </div>
         </div>
 
