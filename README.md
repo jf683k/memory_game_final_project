@@ -1,6 +1,6 @@
 # Memory Game Project
 
-##Instructions:
+##Instructions:##
 
 *Click on cards attempting to match two cards.*
 *Try to complete all matches as quickly as possible*
