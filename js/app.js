@@ -61,7 +61,7 @@ function formatTimer() {
 	return min + ":" + sec;
 }
 /*Shuffles the deck of cards*/
-/*shuffle(icons);*/
+shuffle(icons);
 
 const cardsContainer = document.querySelector(".deck");
 
