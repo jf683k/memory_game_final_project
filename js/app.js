@@ -199,6 +199,8 @@ const restartGame = function() {
 	cardsContainer.innerHTML = "";
 	stopTimer();
 	timerStart = false;
+	/*reshuffle the deck*/
+	shuffle(icons);
 	/*Call init() to restart game.*/
 	init();
 	/*Reset variables.*/
@@ -210,7 +212,6 @@ const restartGame = function() {
 	starsContainer.innerHTML = `<li><i class="fa fa-star"></i>
 	<li><i class="fa fa-star"></i>
 	<li><i class="fa fa-star"></i>`;
-	shuffle(icons);
 };
 restartButton.addEventListener("click", restartGame);
 modalRestartButton.addEventListener("click", restartGame);
