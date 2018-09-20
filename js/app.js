@@ -105,6 +105,7 @@ function click(card) {
 		/*If else statement to create proper action
 		*considering whether a card is already opened
 		*or not.*/
+	if (openedCards.length < 2){
 		if(openedCards.length === 1) {
 
 			card.classList.add("open", "show", "disable");
