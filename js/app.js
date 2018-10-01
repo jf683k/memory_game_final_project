@@ -78,7 +78,7 @@ function init() {
 	for(let i = 0; i < icons.length; i++) {
 		const card = document.createElement("li");
 		card.classList.add("card");
-		card.innerHTML = `<i class="${icons[i]}"></i>`;
+		card.innerHTML = "<i class="${icons[i]}"></i>`";
 		cardsContainer.appendChild(card);
 
 		/*Creates animation for card clicks.*/
@@ -159,7 +159,7 @@ function gameOver() {
 }
 /*Move Counter*/
 const movesContainer = document.querySelector(".moves");
-const modalMovesContainer = document.querySelector('.modal-moves');
+const modalMovesContainer = document.querySelector(".modal-moves");
 let moves = 0;
 movesContainer.innerHTML = 0;
 modalMovesContainer.innerHTML = 0;
@@ -178,13 +178,13 @@ function ranking() {
 
 	switch(moves) {
 		case 15:
-			starsContainer.innerHTML = '<li><i class="fa fa-star"></i></li>
-        	<li><i class="fa fa-star"></i>';
+			starsContainer.innerHTML = '"<li><i class="fa fa-star"></i></li>
+        	<li><i class="fa fa-star"></i>";
     		starsCount.innerText = "2";
         break;
 
         case 20:
-        	starsContainer.innerHTML = '<li><i class="fa fa-star"></i>';
+        	starsContainer.innerHTML = "<li><i class="fa fa-star"></i>";
         	starsCount.innerText = "1";
         break;
 	}
@@ -209,9 +209,9 @@ const restartGame = function() {
 	resetTimer();
 	movesContainer.innerHTML = moves;
 	modalMovesContainer.innerHTML = moves;
-	starsContainer.innerHTML = '<li><i class="fa fa-star"></i>
+	starsContainer.innerHTML = "<li><i class="fa fa-star"></i>
 	<li><i class="fa fa-star"></i>
-	<li><i class="fa fa-star"></i>';
+	<li><i class="fa fa-star"></i>";
 };
 restartButton.addEventListener("click", restartGame);
 modalRestartButton.addEventListener("click", restartGame);
