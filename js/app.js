@@ -209,9 +209,9 @@ const restartGame = function() {
 	resetTimer();
 	movesContainer.innerHTML = moves;
 	modalMovesContainer.innerHTML = moves;
-	starsContainer.innerHTML = '<li><i class="fa fa-star"></i>
-	<li><i class="fa fa-star"></i>
-	<li><i class="fa fa-star"></i>';
+	starsContainer.innerHTML = "<li><i class="fa fa-star"></i>"
+	"<li><i class="fa fa-star"></i>"
+	"<li><i class="fa fa-star"></i>";
 };
 restartButton.addEventListener("click", restartGame);
 modalRestartButton.addEventListener("click", restartGame);
