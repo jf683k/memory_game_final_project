@@ -178,8 +178,7 @@ function ranking() {
 
 	switch(moves) {
 		case 15:
-			starsContainer.innerHTML = "<li><i class="fa fa-star"></i></li>"
-        	"<li><i class="fa fa-star"></i>";
+			starsContainer.innerHTML = "<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i>";
     		starsCount.innerText = "2";
         break;
 
@@ -209,9 +208,7 @@ const restartGame = function() {
 	resetTimer();
 	movesContainer.innerHTML = moves;
 	modalMovesContainer.innerHTML = moves;
-	starsContainer.innerHTML = "<li><i class="fa fa-star"></i>"
-	"<li><i class="fa fa-star"></i>"
-	"<li><i class="fa fa-star"></i>";
+	starsContainer.innerHTML = "<li><i class="fa fa-star"></i><li><i class="fa fa-star"></i><li><i class="fa fa-star"></i>";
 };
 restartButton.addEventListener("click", restartGame);
 modalRestartButton.addEventListener("click", restartGame);
